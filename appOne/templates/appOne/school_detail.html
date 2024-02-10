@@ -1,0 +1,28 @@
+{% extends "appOne/base_app_one.html" %}
+{% block body_block %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to the School Detail Page!</h1>
+  <h2>School Details:</h2>
+  <p>Name: {{school_detail.name}}</p>
+  <p>Principal: {{school_detail.principal}}</p>
+  <p>Location: {{school_detail.location}}</p>
+
+  <h3>Students:</h3>
+  {% for student in school_detail.students.all %}
+  <p>{{student.name}} who is {{student.age}} years old.</p>
+  {% endfor %}
+</div>
+<div class="container">
+  <a
+    href="{% url 'app_one:update' pk=school_detail.id %}"
+    class="btn btn-outline-warning"
+    >Update</a
+  >
+  <a
+    href="{% url 'app_one:delete' pk=school_detail.id %}"
+    class="btn btn-outline-danger"
+    >Delete</a
+  >
+</div>
+
+{% endblock %}
